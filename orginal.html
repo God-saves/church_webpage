@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calvary</title>
+  <link rel="icon" href="https://sbcnet.wpenginepowered.com/wp-content/uploads/2020/08/cropped-SBC-MainBrand-Digital-PrimaryMark-Color-32x32.png" sizes="32x32">
+  <style>
+    
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #555;
+    }
+
+    .header {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 40px;
+      border-top: 4px solid #555;
+      border-bottom: 4px solid #B0C4DE;
+    }
+
+    .main-content {
+      width: 80%;
+      margin: auto;
+      padding: 20px;
+    }
+
+    /* MASTER NAV CONTAINER */
+    .navigate {
+      background-color: #333;
+      border-top: 3px solid #555;    /* Copper Top */
+      border-bottom: 8px solid #555; /* Copper Bottom */
+      padding: 10px 0;
+    }
+
+    /* THE HORIZONTAL ROW CONTAINER */
+    .navigation-links {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      font-size: 28px;
+      align-items: center; /* Vertically centers the entire row */
+    }
+
+    /* INDIVIDUAL LIST ITEM SPACING */
+    .navigation-links li {
+      margin: 0 6px; 
+    }
+
+    /* THE CORE LINK STYLING */
+    .navigation-links li a {
+      color: white;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    /* THE DROPDOWN BUTTONS */
+    .dropbtn {
+      background-color: #444;
+      border: 1px solid #555;
+      border-radius: 4px;
+      width: 200px;
+      height: 60px;        /* FORCES absolute identical heights */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 16px;     /* Removed vertical padding to let height property rule */
+      box-sizing: border-box; 
+    }
+
+    /* THE FLAT BUTTONS (Home, Contact, Donations) */
+    .non-dropbtn {
+      background-color: #444;
+      border: 1px solid #555;
+      border-radius: 4px;
+      width: 200px;
+      height: 60px;        /* MATCHES the dropdown buttons exactly */
+      display: flex;
+      justify-content: center; /* Centers text and emoji horizontally */
+      align-items: center;    /* Centers text and emoji vertically */
+      padding: 0 16px;
+      box-sizing: border-box;
+    }
+
+    /* Uniform Hover State */
+    .dropbtn:hover,
+    .non-dropbtn:hover {
+      background-color: #555;
+    }
+
+    /* ARROW LOGIC */
+    .dropbtn::after {
+      content: " ▼";
+      color: #aaa;
+      font-size: 24px;
+      display: inline-block;
+      transition: transform 0.3s;
+    }
+
+    .dropdown:hover .dropbtn::after {
+      transform: rotate(180deg);
+      color: #D47A5B;
+    }
+
+    /* DROPDOWN POPUPS */
+    .dropdown { 
+      position: relative;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #ffffff; 
+      border: 1px solid #ccc;
+      min-width: 100%; 
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      top: 100%; /* Puts the popup box exactly below the 60px button */
+    }
+
+    .dropdown-content a {
+      color: black !important;
+      padding: 12px 16px;
+      text-align: left;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+    /* ==========================================================================
+       MOBILE RESPONSIVE SCRIPT (Applies only to screens 768px wide or smaller)
+       ========================================================================== */
+    <style>
+    /* ... Keep your body, header, main-content, and base .navigate styles at the top ... */
+
+    /* ==========================================================================
+       DESKTOP ONLY RULES (Screens wider than 768px)
+       ========================================================================== */
+    @media screen and (min-width: 769px) {
+      /* Keep desktop hover working perfectly */
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
+      .dropdown:hover .dropbtn::after {
+        transform: rotate(180deg);
+        color: #D47A5B;
+      }
+      .dropbtn:hover,
+      .non-dropbtn:hover {
+        background-color: #555;
+      }
+    }
+
+    /* ==========================================================================
+       MOBILE ONLY RULES (Screens 768px wide or smaller)
+       ========================================================================== */
+    @media screen and (max-width: 768px) {
+      
+      /* Turn the row into a vertical stack list */
+      .navigation-links {
+        flex-direction: column; 
+        align-items: stretch;   
+        width: 100%;
+      }
+
+      /* Widen the buttons to fill the phone screen */
+      .dropbtn, 
+      .non-dropbtn {
+        width: 100%;          
+        margin: 4px 0;        
+        height: 55px;         
+        justify-content: center; /* Centers the text on phone screens */
+      }
+
+      /* Turn dropdown menus into inline folders that expand safely */
+      .dropdown-content {
+        position: relative;   
+        top: 0;
+        box-shadow: none;     
+        border: none;
+        border-left: 4px solid #D47A5B; 
+        background-color: #444; 
+        width: 100%;
+        display: none; /* Keeps it completely hidden until Javascript opens it */
+      }
+
+      .dropdown-content a {
+        color: white !important;
+        padding: 14px 24px;   
+      }
+      
+      .dropdown-content a:hover {
+        background-color: #555;
+      }
+
+      /* THE SECRET SAUCE: The JavaScript looks for these classes when you tap! */
+      .dropdown.is-open .dropdown-content {
+        display: block !important;
+      }
+      .dropdown.is-open .dropbtn::after {
+        transform: rotate(180deg);
+        color: #D47A5B;
+      }
+    }
+</style>
+    
+    /*#708090*/
+  </style>
+</head>
+<body>
+  <nav class="navigate">
+   <ul class="navigation-links">
+    <li><a class="non-dropbtn" href="homepage.html">Home</a></li>
+    
+    <li class="dropdown">
+      <a class="dropbtn">About Us </a>
+      <div class="dropdown-content">
+        <a href="Beliefs.html">What We Believe</a>
+        <a href="leadership.html">Our Leadership</a>
+        <a href="history.html">Our History</a>
+      </div>
+    </li>
+    
+    <li class="dropdown">
+      <a class="dropbtn">Mission</a>
+      <div class="dropdown-content">
+        <a href="Africa.html">Hope to Africa</a>
+        <a href="Darlington-high.html">Darlington High</a>
+        <a href="Outreach.html">Outreach</a>
+      </div>
+    </li>
+    
+    <li><a class="non-dropbtn" href="contact.html">Contact📨</a></li>
+    
+    <li class="dropdown">
+      <a class="dropbtn">Sermons</a>
+    </li>
+    
+    <li class="dropdown">
+      <a class="dropbtn">Resources</a>
+    </li>
+    
+    <li><a class="non-dropbtn">Donations</a></li> 
+   </ul>
+  </nav>
+  <div class="header">
+    <h1>Welcome to Calvary Baptist Church</h1>
+    <h3>John 3:16-17</h3>
+    <p style="max-width: 800px; margin: 0 auto; line-height: 1.6;">For God so loved the world, that He gave His only begotten Son, that whoever believes in Him shall not perish, but have eternal life.<br><br>For God did not send the Son into the world to judge the world, but that the world might be saved through Him.</p>
+  </div>
+  <div class="main-content">
+    <h2>Service Times</h2>
+    <p>Join us Sunday mornings</p>
+    <ul>
+      <li><b>10:00 AM</b>- Sunday School</li>
+      <li><b>11:00 AM</b>- Church Service</li>
+    </ul>
+    <hr style="border: 2px solid #ccc; margin: 30px 0;">
+    <h2>Past Sermons</h2>
+    <p>Click below to listen to recent services:</p>
+    <table style="width:100%; border: 4px solid #000000; border-collapse: collapse; background-color: #5c7290;">
+      <tr>
+        <td style="text-align:center; padding:20px; border: 1px solid #ccc; vertical-align: top;">
+          <h3>What are the essentials of the gospel?</h3>
+          <p><b>Date</b>: June 14, 2026</p>
+          <video id="sermon1" src="essentials-gospel.mp4" width="320" height="180" controls onplay="trackVideo('sermon1')"></video>
+          <div>
+            <button onclick="document.getElementById('sermon1').currentTime -= 10" style="padding: 10px 15px; cursor: pointer;">⏪ -10s</button>
+            <button onclick="document.getElementById('sermon1').play()" style="padding: 10px 15px; Cursor: pointer;">🔊 Play Sermon</button>
+            <button onclick="document.getElementById('sermon1').currentTime += 10" style="padding: 10px 15px; cursor: pointer;">+10s ⏩</button>
+          </div>
+        </td>
+        <td style="text-align:center; padding:20px; border: 1px solid #ccc; vertical-align: top;">
+          <h3>What is repentance?</h3>
+          <p><b>Date:</b> June 7, 2026</p>
+          <video id="sermon2" src="repentance.mp4" width="320" height="180" controls onplay="trackVideo('sermon2')"></video>
+          <div>
+            <button onclick="document.getElementById('sermon2').currentTime -= 10" style="padding: 10px 15px; cursor: pointer;">⏪ -10s</button>
+            <button onclick="document.getElementById('sermon2').play()" style="padding: 10px 15px; Cursor: pointer;">🔊 Play Sermon</button>
+            <button onclick="document.getElementById('sermon2').currentTime += 10" style="padding: 10px 15px; cursor: pointer;">+10s ⏩</button>
+          </div>
+        </td> 
+      </tr>
+      <tr>
+        <td style="text-align:center; padding:20px; border: 1px solid #ccc; vertical-align: top;">
+
+        </td>
+
+      </tr>
+    </table>
+  </div>
+<script>
+    let lastPlayedVideo = null;
+
+    function trackVideo(videoId) {
+        lastPlayedVideo = document.getElementById(videoId);
+        
+        // 1. Keep your working fix! This un-highlights the control bar buttons immediately
+        lastPlayedVideo.blur(); 
+    }
+
+    // 2. Listen for arrow keys and spacebar globally across the webpage
+    window.addEventListener('keydown', function(event) {
+        
+        // If the user is currently typing inside a comment box or input field, don't run shortcuts
+        if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+            return;
+        }
+
+        // Check if we have a video saved in memory
+        if (lastPlayedVideo) {
+            
+            // LEFT ARROW (Rewind 10s)
+            if (event.key === 'ArrowLeft') {
+                lastPlayedVideo.currentTime -= 10;
+                event.preventDefault(); 
+            } 
+            
+            // RIGHT ARROW (Fast Forward 10s)
+            if (event.key === 'ArrowRight') {
+                lastPlayedVideo.currentTime += 10;
+                event.preventDefault(); 
+            }
+
+            // SPACE BAR (Play / Pause Toggle)
+            if (event.key === ' ') {
+                if (lastPlayedVideo.paused) {
+                    lastPlayedVideo.play();
+                } else {
+                    lastPlayedVideo.pause();
+                }
+                event.preventDefault(); 
+            }
+        }
+    });
+
+    // 3. THE FULLSCREEN FIX: If they enter fullscreen, force focus back to the page 
+    // so the browser can't trap the keys inside the dark fullscreen player interface.
+    document.addEventListener('fullscreenchange', function() {
+        if (document.fullscreenElement) {
+            // Force the video element to lose highlight focus while inside fullscreen mode
+            document.fullscreenElement.blur();
+        }
+    });
+</script>
+</body>  
+
+</html>

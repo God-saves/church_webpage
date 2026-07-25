@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our History & Heritage</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #f8f9fa;
+      color: #2c3e50;
+      margin: 0;
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .header h1 {
+      font-size: 2.2rem;
+      color: #1a2522;
+      margin-bottom: 8px;
+    }
+    .header p {
+      color: #6c757d;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    /* Vision Container Card */
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border: 1px solid #e9ecef;
+    }
+
+    .card h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      color: #1a2522;
+      border-bottom: 2px solid #f1f3f5;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    /* Timeline Container */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+      border-left: 3px solid #1a2522;
+      margin-top: 20px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 32px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Dot on timeline */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -38px;
+      top: 4px;
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      background-color: #1a2522;
+      border: 3px solid #ffffff;
+    }
+
+    .timeline-year {
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: #1a2522;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 6px 0;
+      color: #2c3e50;
+    }
+
+    .timeline-text {
+      margin: 0;
+      color: #495057;
+      font-size: 0.98rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Page Header -->
+    <div class="header">
+      <h1>Our History & Heritage</h1>
+      <p>Looking back at God's faithfulness throughout our church journey.</p>
+    </div>
+
+    <!-- Intro / Mission Statement Card -->
+    <div class="card">
+      <h2>A Legacy of Faith</h2>
+      <p>
+        For decades, our church family has been dedicated to proclaiming the gospel, growing together in God's Word, and serving our local community. We praise God for all He has done in our past and look forward with anticipation to where He is leading us next.
+      </p>
+    </div>
+
+    <!-- Timeline Card -->
+    <div class="card">
+      <h2>Key Milestones</h2>
+      
+      <div class="timeline">
+
+        <!-- Era 1 -->
+        <div class="timeline-item">
+          <div class="timeline-year">1975</div>
+          <h3 class="timeline-title">Church Founded</h3>
+          <p class="timeline-text">
+            A small group of believers began gathering in a local home for weekly prayer and Bible study, laying the spiritual foundation for our congregation.
+          </p>
+        </div>
+
+        <!-- Era 2 -->
+        <div class="timeline-item">
+          <div class="timeline-year">1982</div>
+          <h3 class="timeline-title">First Building Dedicated</h3>
+          <p class="timeline-text">
+            As the congregation grew, the church acquired property and built its first sanctuary to accommodate Sunday services and Sunday school classes.
+          </p>
+        </div>
+
+        <!-- Era 3 -->
+        <div class="timeline-item">
+          <div class="timeline-year">2005</div>
+          <h3 class="timeline-title">Ministry & Campus Expansion</h3>
+          <p class="timeline-text">
+            Added new classroom spaces and a fellowship hall to better serve families, expand youth programs, and host community outreach events.
+          </p>
+        </div>
+
+        <!-- Era 4 -->
+        <div class="timeline-item">
+          <div class="timeline-year">Present Day</div>
+          <h3 class="timeline-title">Continuing the Mission</h3>
+          <p class="timeline-text">
+            Today, our desire remains the same: to glorify God through sound teaching, authentic fellowship, and sharing the love of Christ in our town and beyond.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

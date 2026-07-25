@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recommended Resources</title>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background-color: #f8f9fa;
+      color: #2c3e50;
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { text-align: center; color: #1a2522; margin-bottom: 30px; }
+    .resource-list { display: flex; flex-direction: column; gap: 20px; }
+    .resource-card {
+      background: white;
+      padding: 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+      border-left: 5px solid #1a2522;
+    }
+    .resource-title {
+      font-size: 1.3rem;
+      margin: 0 0 6px 0;
+    }
+    .resource-title a {
+      color: #1a2522;
+      text-decoration: none;
+    }
+    .resource-title a:hover { text-decoration: underline; }
+    .resource-meta {
+      font-size: 0.85rem;
+      color: #6c757d;
+      margin-bottom: 12px;
+    }
+    .resource-desc {
+      margin: 0 0 15px 0;
+      color: #495057;
+      line-height: 1.5;
+    }
+    .read-btn {
+      display: inline-block;
+      background-color: #f1f3f5;
+      color: #1a2522;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    .read-btn:hover { background-color: #e9ecef; }
+    .loading-msg { text-align: center; color: #666; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Recommended Reading & Articles</h1>
+    <div id="resourcesList" class="loading-msg">Loading resources...</div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://jnrhwrrlyxwycdgccdmk.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impucmh3cnJseXh3eWNkZ2NjZG1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ5NTk3MDEsImV4cCI6MjEwMDUzNTcwMX0.FWhCkyeoBhQx7hQ4zc_rRbEoNdywrF1YjLFvJ-qToFo";
+
+    const _supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+      auth: { persistSession: false }
+    });
+
+    async function fetchResources() {
+      const container = document.getElementById('resourcesList');
+      const { data: resources, error } = await _supabase
+        .from('resources')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        container.innerHTML = '<p>Error loading articles.</p>';
+        return;
+      }
+
+      if (!resources || resources.length === 0) {
+        container.innerHTML = '<p>No articles posted yet!</p>';
+        return;
+      }
+
+      container.className = 'resource-list';
+      container.innerHTML = resources.map(item => `
+        <div class="resource-card">
+          <h2 class="resource-title">
+            <a href="${item.url}" target="_blank">${item.title}</a>
+          </h2>
+          <div class="resource-meta">
+            ${item.author ? `By ${item.author} • ` : ''} 
+            Posted on ${new Date(item.created_at).toLocaleDateString()}
+          </div>
+          ${item.description ? `<p class="resource-desc">${item.description}</p>` : ''}
+          <a href="${item.url}" target="_blank" class="read-btn">Read Article ↗</a>
+        </div>
+      `).join('');
+    }
+
+    fetchResources();
+  </script>
+</body>
+</html>
