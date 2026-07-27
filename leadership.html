@@ -1,171 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Church Leadership & Staff</title>
+  <link rel="icon" href="https://sbcnet.wpenginepowered.com/wp-content/uploads/2020/08/cropped-SBC-MainBrand-Digital-PrimaryMark-Color-32x32.png" sizes="32x32">
+  <title>Our Leadership - Calvary Baptist Church</title>
+
   <style>
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #f8f9fa;
-      color: #2c3e50;
+      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px 20px;
-      line-height: 1.6;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .header h1 {
-      font-size: 2.2rem;
-      color: #1a2522;
-      margin-bottom: 8px;
-    }
-    .header p {
-      color: #6c757d;
-      font-size: 1.1rem;
-      margin: 0;
+      padding: 0;
+      background-color: #4f5f51;
+      color: white;
     }
 
-    /* Grid Layout for Leaders */
+    .main-content {
+      width: 80%;
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px 80px 20px;
+      text-align: center;
+    }
+
+    /* PAGE HERO BANNER */
+    .hero-section {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;          
+      border-bottom: 5px solid #D47A5B;
+    }
+
+    .hero-section h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+    
+    .hero-section p {
+      font-size: 20px;
+      color: #f1f1f1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* LEADERSHIP GRID & CARDS */
     .leadership-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      gap: 30px;
+      margin-top: 20px;
     }
 
-    /* Leader Card Container */
-    .leader-card {
-      background: #ffffff;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      border: 1px solid #e9ecef;
+    .staff-card {
+      background-color: rgba(44, 62, 80, 0.5);
+      border-radius: 8px;
+      border-top: 5px solid #D47A5B;
+      padding: 25px 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       display: flex;
       flex-direction: column;
-      text-align: center;
+      align-items: center;
     }
 
-    /* Photo / Photo Placeholder */
-    .leader-photo {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      background-color: #e9ecef;
+    .staff-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #333;
+      border: 3px solid #D47A5B;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #adb5bd;
-      font-weight: 600;
+      font-size: 50px;
+      margin-bottom: 15px;
+      color: #D47A5B;
+      object-fit: cover;
     }
 
-    .leader-info {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+    .staff-name {
+      font-size: 26px;
+      color: #ffffff;
+      margin: 10px 0 5px 0;
     }
 
-    .leader-name {
-      font-size: 1.3rem;
-      color: #1a2522;
-      margin: 0 0 4px 0;
-    }
-
-    .leader-role {
-      font-size: 0.9rem;
+    .staff-title {
+      font-size: 18px;
+      color: #D47A5B;
+      font-weight: bold;
+      margin-bottom: 15px;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: #6c757d;
-      font-weight: 600;
-      margin-bottom: 12px;
+      letter-spacing: 1px;
     }
 
-    .leader-bio {
-      font-size: 0.95rem;
-      color: #495057;
-      margin-bottom: 20px;
-      flex-grow: 1;
+    .staff-bio {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #e0e0e0;
+      margin-bottom: 15px;
     }
 
-    .contact-btn {
-      display: inline-block;
+    /* MOBILE ONLY RULES */
+    @media screen and (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 36px;
+      }
+
+      .main-content {
+        width: 90%;
+        padding: 30px 10px;
+      }
+
+      .leadership-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* FOOTER STYLING */
+    .church-footer {
+      display: block;
+      width: 100%;
+      background-color: #2b302c; 
+      border: 10px solid #454d46;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      clear: both;
+      box-sizing: border-box;
+    }
+
+    .church-footer p {
+      margin: 5px 0;
+    }
+
+    .footer-social {
+      margin-top: 15px;
+    }
+
+    .footer-social a {
+      color: #D47A5B; 
       text-decoration: none;
-      background-color: #1a2522;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: background-color 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      transition: color 0.2s ease;
     }
 
-    .contact-btn:hover {
-      background-color: #2c3e50;
+    .footer-social a:hover {
+      color: #ffffff; 
+    }
+
+    .church-footer .copyright {
+      margin-top: 20px;
+      opacity: 0.6; 
+      font-size: 12px; 
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    
-    <!-- Page Header -->
-    <div class="header">
-      <h1>Our Leadership</h1>
-      <p>Meet the team dedicated to serving our church family and community.</p>
-    </div>
+  <!-- HERO HEADER -->
+  <header class="hero-section">
+    <h1>Our Leadership</h1>
+    <p>Serving the congregation and community with faith and dedication</p>
+  </header>
 
-    <!-- Leadership Grid -->
+  <!-- MAIN LEADERSHIP STAFF CONTENT -->
+  <main class="main-content">
     <div class="leadership-grid">
 
-      <!-- Leader 1: Senior Pastor -->
-      <div class="leader-card">
-        <!-- Swap the src URL with an actual photo when ready -->
-        <img class="leader-photo" src="https://via.placeholder.com/400x300?text=Pastor+Photo" alt="Senior Pastor">
-        <div class="leader-info">
-          <h2 class="leader-name">John Doe</h2>
-          <span class="leader-role">Senior Pastor</span>
-          <p class="leader-bio">
-            Pastor John has been serving our congregation since 2018. He is passionate about verse-by-verse preaching, discipleship, and shepherd care.
-          </p>
-          <a href="mailto:pastor@yourchurchdomain.org" class="contact-btn">Email Pastor John</a>
-        </div>
+      <!-- ELDER CLAYTON -->
+      <div class="staff-card">
+        <!-- Replace symbol with <img src="clayton.jpg" alt="Elder Clayton" class="staff-avatar"> when you have photos -->
+        <div class="staff-avatar">✝</div>
+        <h2 class="staff-name">Elder Clayton</h2>
+        <div class="staff-title">Pastor</div>
+        <p class="staff-bio">
+          Pastor Clayton serves as our pastor, guiding our congregation through biblically grounded teaching, spiritual leadership, and a heart for pastoral care in our community.
+        </p>
       </div>
 
-      <!-- Leader 2: Associate / Youth Pastor -->
-      <div class="leader-card">
-        <img class="leader-photo" src="https://via.placeholder.com/400x300?text=Leader+Photo" alt="Associate Pastor">
-        <div class="leader-info">
-          <h2 class="leader-name">Jane Smith</h2>
-          <span class="leader-role">Youth & Family Director</span>
-          <p class="leader-bio">
-            Jane leads our youth group and children's ministries, helping the next generation build a strong, lifelong foundation in Christ.
-          </p>
-          <a href="mailto:youth@yourchurchdomain.org" class="contact-btn">Email Jane</a>
-        </div>
+      <!-- ELDER SAM -->
+      <div class="staff-card">
+        <div class="staff-avatar">✝</div>
+        <h2 class="staff-name">Elder Sam</h2>
+        <div class="staff-title">Elder</div>
+        <p class="staff-bio">
+          Elder Sam helps shepherd the church family, supporting our ministry initiatives, community outreach, and the spiritual encouragement of our members.
+        </p>
       </div>
 
-      <!-- Leader 3: Worship / Elder -->
-      <div class="leader-card">
-        <img class="leader-photo" src="https://via.placeholder.com/400x300?text=Leader+Photo" alt="Worship Leader">
-        <div class="leader-info">
-          <h2 class="leader-name">Michael Johnson</h2>
-          <span class="leader-role">Worship Leader & Elder</span>
-          <p class="leader-bio">
-            Michael coordinates Sunday music and serves on our elder board. He loves fostering congregational singing centered on biblical truth.
-          </p>
-          <a href="mailto:worship@yourchurchdomain.org" class="contact-btn">Email Michael</a>
-        </div>
+      <!-- CHARLOTTE -->
+      <div class="staff-card">
+        <div class="staff-avatar">🎵</div>
+        <h2 class="staff-name">Charlotte</h2>
+        <div class="staff-title">Music Director</div>
+        <p class="staff-bio">
+          Charlotte oversees our music ministry, leading our worship team and helping our congregation praise God together each week through song.
+        </p>
       </div>
 
     </div>
+  </main>
 
-  </div>
+  <!-- FOOTER -->
+  <footer class="church-footer">
+    <p><strong>Calvary Baptist Church</strong> | 505 West Smith Avenue, Darlington, SC 29501 | (843) 123-4567</p>
+    <p>Sunday Services: 10:30 AM</p>
+    <p>Wednesday Night: Bible Study 6:00 PM</p>
+    
+    <p class="footer-social">
+      <a href="https://www.facebook.com/YOUR-CHURCH-PAGE-HERE" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        <span>Follow us on Facebook</span>
+      </a>
+    </p>
+
+    <p class="copyright">&copy; 2026 Calvary Baptist Church. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>

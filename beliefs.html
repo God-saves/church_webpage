@@ -1,177 +1,406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Beliefs</title>
+  <link rel="icon" href="https://sbcnet.wpenginepowered.com/wp-content/uploads/2020/08/cropped-SBC-MainBrand-Digital-PrimaryMark-Color-32x32.png" sizes="32x32">
+  <title>What We Believe - Calvary Baptist Church</title>
+
   <style>
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #f8f9fa;
-      color: #2c3e50;
+      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px 20px;
-      line-height: 1.6;
+      padding: 0;
+      background-color: #4f5f51;
+      color: white;
     }
-    .container {
-      max-width: 850px;
-      margin: 0 auto;
-    }
-    .header {
+
+    .main-content {
+      width: 80%;
+      max-width: 900px;
+      margin: auto;
+      padding: 60px 20px 80px 20px;
       text-align: center;
+    }
+
+    /* PAGE HERO BANNER */
+    .hero-section {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;          
+      border-bottom: 5px solid #D47A5B;
+    }
+
+    .hero-section h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+    
+    .hero-section p {
+      font-size: 20px;
+      color: #f1f1f1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* MISSION STATEMENT SECTION */
+    .mission-box {
+      background-color: rgba(44, 62, 80, 0.5);
+      border-radius: 8px;
+      border-top: 5px solid #D47A5B;
+      padding: 30px 25px;
       margin-bottom: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
-    .header h1 {
-      font-size: 2.2rem;
-      color: #1a2522;
-      margin-bottom: 8px;
+
+    .mission-box h2 {
+      font-size: 28px;
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 15px;
     }
-    .header p {
-      color: #6c757d;
-      font-size: 1.1rem;
+
+    .mission-box p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #e0e0e0;
       margin: 0;
     }
 
-    /* Core Belief Container Card */
-    .belief-card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 24px;
-      margin-bottom: 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      border-left: 5px solid #1a2522;
+    /* ENDORSED LINKS SECTION */
+    .endorsements-section {
+      margin-bottom: 50px;
     }
 
-    .belief-card h2 {
-      margin-top: 0;
-      font-size: 1.35rem;
-      color: #1a2522;
-      margin-bottom: 10px;
+    .endorsements-section h3 {
+      font-size: 24px;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    .links-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .endorsed-link {
+      display: inline-block;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.2s ease;
+    }
+
+    .endorsed-link:hover {
+      background-color: #D47A5B;
+      border-color: #D47A5B;
+    }
+
+    /* SECTION DIVIDER TITLE */
+    .section-heading {
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 30px;
+      border-bottom: 2px solid rgba(212, 122, 91, 0.4);
+      padding-bottom: 10px;
+    }
+
+    /* BELIEFS CARDS (MATCHING SITE THEME) */
+    .belief-card {
+      background-color: rgba(44, 62, 80, 0.5);
+      border-radius: 8px;
+      border-left: 6px solid #D47A5B;
+      padding: 25px 30px;
+      margin-bottom: 25px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .belief-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+      color: #ffffff;
     }
 
     .belief-summary {
-      font-size: 1.05rem;
-      color: #343a40;
-      margin: 0 0 12px 0;
-      font-weight: 500;
+      font-size: 17px;
+      line-height: 1.5;
+      color: #e0e0e0;
+      margin-bottom: 15px;
     }
 
-    /* Collapsible Details */
-    details {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed #e9ecef;
+    /* EXPANDABLE SCRIPTURE SECTION */
+    .belief-card details {
+      border-top: 1px dashed rgba(255, 255, 255, 0.2);
+      padding-top: 12px;
     }
 
-    summary {
-      font-weight: 600;
-      color: #1a2522;
+    .belief-card summary {
       cursor: pointer;
-      font-size: 0.95rem;
-      user-select: none;
+      font-size: 15px;
+      font-weight: bold;
+      color: #D47A5B;
+      list-style: none;
     }
 
-    summary:hover {
-      color: #2c3e50;
-      text-decoration: underline;
+    .belief-card summary::-webkit-details-marker {
+      display: none;
     }
 
-    .belief-details {
-      margin-top: 12px;
-      color: #495057;
-      font-size: 0.98rem;
+    .belief-card summary::before {
+      content: "▶ ";
+      font-size: 12px;
+      display: inline-block;
+      margin-right: 5px;
+      transition: transform 0.2s ease;
     }
 
-    .scripture-ref {
+    .belief-card details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .full-statement {
+      margin-top: 15px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #f1f1f1;
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 6px;
+    }
+
+    /* MOBILE ADJUSTMENTS */
+    @media screen and (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 36px;
+      }
+
+      .main-content {
+        width: 90%;
+        padding: 30px 10px;
+      }
+
+      .belief-card {
+        padding: 20px 18px;
+      }
+
+      .endorsed-link {
+        width: 100%;
+        box-sizing: border-box;
+      }
+    }
+
+    /* FOOTER STYLING */
+    .church-footer {
       display: block;
-      margin-top: 8px;
-      font-style: italic;
-      color: #6c757d;
-      font-size: 0.9rem;
+      width: 100%;
+      background-color: #2b302c; 
+      border: 10px solid #454d46;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      clear: both;
+      box-sizing: border-box;
+    }
+
+    .church-footer p {
+      margin: 5px 0;
+    }
+
+    .footer-social {
+      margin-top: 15px;
+    }
+
+    .footer-social a {
+      color: #D47A5B; 
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      transition: color 0.2s ease;
+    }
+
+    .footer-social a:hover {
+      color: #ffffff; 
+    }
+
+    .church-footer .copyright {
+      margin-top: 20px;
+      opacity: 0.6; 
+      font-size: 12px; 
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <!-- HERO HEADER -->
+  <header class="hero-section">
+    <h1>What We Believe</h1>
+    <p>Our faith, mission, and foundational truths</p>
+  </header>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="main-content">
+
+    <!-- 1. MISSION STATEMENT -->
+    <section class="mission-box">
+      <h2>Our Mission Statement</h2>
+      <p>
+        [Insert Church Mission Statement Here: e.g., "Calvary Baptist Church exists to glorify God by proclaiming the Gospel of Jesus Christ, making disciples, and serving our community in love."]
+      </p>
+    </section>
+
+    <!-- 2. ENDORSED LINKS / RESOURCES -->
+    <section class="endorsements-section">
+      <h3>Recommended Links & Endorsements</h3>
+      <div class="links-grid">
+        <a href="https://www.sbc.net/about/what-we-believe/baptist-faith-and-message/" target="_blank" class="endorsed-link">The Baptist Faith & Message</a>
+        <a href="EXAMPLE_LINK_2" target="_blank" class="endorsed-link">Endorsed Ministry Link #2</a>
+        <a href="EXAMPLE_LINK_3" target="_blank" class="endorsed-link">Endorsed Resource #3</a>
+      </div>
+    </section>
+
+    <h2 class="section-heading">Core Beliefs</h2>
+
+    <!-- 3. BELIEFS CONTAINERS (DARK THEME) -->
+
+    <!-- BELIEF 1 -->
+    <div class="belief-card">
+      <h3 class="belief-title">1. The Holy Bible</h3>
+      <div class="belief-summary">
+        We believe Bible is the inspired, infallible word of God.
+      </div>
+      <details>
+        <summary>Read full statement & Scripture</summary>
+        <div class="full-statement">
+          <p>[Add full statement and Scripture references here, e.g., 2 Timothy 3:16-17, 2 Peter 1:20-21.]</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- BELIEF 2 -->
+    <div class="belief-card">
+      <h3 class="belief-title">1. The Holy Bible</h3>
+      <div class="belief-summary">
+        We believe that Jesus is the only way by which we can be saved.
+      </div>
+      <details>
+        <summary>Read full statement & Scripture</summary>
+        <div class="full-statement">
+          <p>[Add full statement and Scripture references here, e.g., 2 Timothy 3:16-17, 2 Peter 1:20-21.]</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- BELIEF 3 -->
+    <div class="belief-card">
+      <h3 class="belief-title">2. God & The Trinity</h3>
+      <div class="belief-summary">
+        We believe in one God, eternally existing in three persons: Father, Son, and Holy Spirit.
+      </div>
+      <details>
+        <summary>Read full statement & Scripture</summary>
+        <div class="full-statement">
+          <p>[Add full statement and Scripture references here, e.g., Matthew 28:19, 2 Corinthians 13:14.]</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- BELIEF 4 -->
+    <div class="belief-card">
+      <h3 class="belief-title">3. Salvation</h3>
+      <div class="belief-summary">
+        We believe salvation is a free gift of God's grace through faith in Jesus Christ alone.
+      </div>
+      <details>
+        <summary>Read full statement & Scripture</summary>
+        <div class="full-statement">
+          <p>[Add full statement and Scripture references here, e.g., Ephesians 2:8-9, John 14:6.]</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- BELIEF 3 -->
+    <div class="belief-card">
+      <h3 class="belief-title">2. Of creation and man's purpose</h3>
+      <div class="belief-summary">
+        We believe all of creation is for the glory of Christ alone.
+      </div>
+      <details>
+        <summary>Read full statement & Scripture</summary>
+        <div class="full-statement">
+          <p>[Add full statement and Scripture references here, e.g., Matthew 28:19, 2 Corinthians 13:14.]</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- BELIEF 3 -->
+    <div class="belief-card">
+      <h3 class="belief-title">2. The nature of salvation</h3>
+      <div class="belief-summary">
+        We believe salvation is by grace through faith alone in Christ Jesus's work alone.
+        Repenance of sin is not a work. The Law teaches us God's standards and character.
+        My sin shows me I'm dirty and sick.
+        The Law condemns me, very justly.
+        Christ is in whom I trust. 
+      </div>
+      <details>
+        <summary>Read full statement & Scripture</summary>
+        <div class="full-statement">
+          <p>[Add full statement and Scripture references here, e.g., Matthew 28:19, 2 Corinthians 13:14.]</p>
+        </div>
+      </details>
+    </div>
+
+     <!-- BELIEF 3 -->
+    <div class="belief-card">
+      <h3 class="belief-title"> errors</h3>
+      <div class="belief-summary">
+        Here are some of the errors in today's Christianity.
+        We do not recognized them as legitimate or reconcilable with Scripture.
+        Error: God creates people as sinners. 
+        bibical reality: God does not and has not ever made anyone a sinner.
+        homosexauls and the like were not created by God as inherently sinful creations. 
+      </div>
+      <details>
+        <summary>Read full statement & Scripture</summary>
+        <div class="full-statement">
+          <p>[Add full statement and Scripture references here, e.g., Matthew 28:19, 2 Corinthians 13:14.]</p>
+        </div>
+      </details>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="church-footer">
+    <p><strong>Calvary Baptist Church</strong> | 505 West Smith Avenue, Darlington, SC 29501 | (843) 123-4567</p>
+    <p>Sunday Services: 10:30 AM</p>
+    <p>Wednesday Night: Bible Study 6:00 PM</p>
     
-    <!-- Page Header -->
-    <div class="header">
-      <h1>What We Believe</h1>
-      <p>The essential truths that guide our faith and ministry.</p>
-    </div>
+    <p class="footer-social">
+      <a href="https://www.facebook.com/YOUR-CHURCH-PAGE-HERE" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        <span>Follow us on Facebook</span>
+      </a>
+    </p>
 
-    <!-- Belief 1: The Bible -->
-    <div class="belief-card">
-      <h2>1. The Holy Bible</h2>
-      <p class="belief-summary">We believe the Bible is the inspired, infallible word of God.</p>
-      
-      <details>
-        <summary>Read full statement & Scripture</summary>
-        <div class="belief-details">
-          We believe that the Holy Scriptures of the Old and New Testaments are the complete, written Word of God, fully inspired by the Holy Spirit, without error in the original manuscripts, and the supreme authority in all matters of faith and life.
-          <span class="scripture-ref">Key Passages: 2 Timothy 3:16-17, 2 Peter 1:20-21</span>
-        </div>
-      </details>
-    </div>
-
-    <!-- Belief 2: God & The Trinity -->
-    <div class="belief-card">
-      <h2>2. God & The Trinity</h2>
-      <p class="belief-summary">We believe in one eternal God existing in three Persons: Father, Son, and Holy Spirit.</p>
-      
-      <details>
-        <summary>Read full statement & Scripture</summary>
-        <div class="belief-details">
-          We believe in one God, creator of all things, infinitely perfect, and eternally existing in three distinct Persons: God the Father, God the Son, and God the Holy Spirit, each equal in power and glory.
-          <span class="scripture-ref">Key Passages: Deuteronomy 6:4, Matthew 28:19, 2 Corinthians 13:14</span>
-        </div>
-      </details>
-    </div>
-
-    <!-- Belief 3: Jesus Christ -->
-    <div class="belief-card">
-      <h2>3. Jesus Christ</h2>
-      <p class="belief-summary">We believe Jesus Christ is fully God and fully man, who died for our sins and rose again.</p>
-      
-      <details>
-        <summary>Read full statement & Scripture</summary>
-        <div class="belief-details">
-          We believe Jesus Christ was conceived by the Holy Spirit, born of the Virgin Mary, lived a sinless life, died on the cross as a sacrifice for our sins, arose bodily from the dead, and ascended into heaven where He reigns as Lord.
-          <span class="scripture-ref">Key Passages: John 1:1-14, 1 Corinthians 15:3-4, Philippians 2:5-11</span>
-        </div>
-      </details>
-    </div>
-
-    <!-- Belief 4: Salvation -->
-    <div class="belief-card">
-      <h2>4. Salvation by Grace</h2>
-      <p class="belief-summary">We believe salvation is a free gift from God received through faith in Jesus Christ.</p>
-      
-      <details>
-        <summary>Read full statement & Scripture</summary>
-        <div class="belief-details">
-          We believe all people have sinned and fallen short of God’s glory. Salvation cannot be earned by good works; it is given solely by God's grace through repentance and faith in the finished work of Jesus Christ on the cross.
-          <span class="scripture-ref">Key Passages: Ephesians 2:8-9, Romans 3:23, John 14:6</span>
-        </div>
-      </details>
-    </div>
-
-    <!-- Belief 5: The Church -->
-    <div class="belief-card">
-      <h2>5. The Church & Community</h2>
-      <p class="belief-summary">We believe the Church is called to gather for worship, fellowship, and serving others.</p>
-      
-      <details>
-        <summary>Read full statement & Scripture</summary>
-        <div class="belief-details">
-          We believe the Church consists of all true believers in Jesus Christ. The local church is called to assemble for prayer, teaching, the ordinances of baptism and communion, and sharing the Gospel with the world.
-          <span class="scripture-ref">Key Passages: Acts 2:42-47, Hebrews 10:24-25, Matthew 28:18-20</span>
-        </div>
-      </details>
-    </div>
-
-  </div>
+    <p class="copyright">&copy; 2026 Calvary Baptist Church. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
