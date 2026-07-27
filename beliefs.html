@@ -52,7 +52,7 @@
       border-radius: 8px;
       border-top: 5px solid #D47A5B;
       padding: 30px 25px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
@@ -68,6 +68,64 @@
       line-height: 1.6;
       color: #e0e0e0;
       margin: 0;
+    }
+
+    /* SBC AFFILIATION BADGE */
+    .sbc-affiliation-card {
+      background-color: rgba(44, 62, 80, 0.5);
+      border-radius: 8px;
+      border-left: 6px solid #D47A5B;
+      padding: 20px 25px;
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .sbc-info {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .sbc-logo {
+      width: 48px;
+      height: 48px;
+      flex-shrink: 0;
+    }
+
+    .sbc-text h3 {
+      margin: 0 0 5px 0;
+      font-size: 20px;
+      color: #ffffff;
+    }
+
+    .sbc-text p {
+      margin: 0;
+      font-size: 15px;
+      color: #e0e0e0;
+      line-height: 1.4;
+    }
+
+    .sbc-btn {
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      font-size: 14px;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+    }
+
+    .sbc-btn:hover {
+      background-color: #D47A5B;
+      border-color: #D47A5B;
     }
 
     /* ENDORSED LINKS SECTION */
@@ -191,6 +249,17 @@
         padding: 30px 10px;
       }
 
+      .sbc-affiliation-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .sbc-btn {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
+
       .belief-card {
         padding: 20px 18px;
       }
@@ -263,13 +332,25 @@
       </p>
     </section>
 
+    <!-- SBC AFFILIATION NOTICE -->
+    <div class="sbc-affiliation-card">
+      <div class="sbc-info">
+        <img src="https://sbcnet.wpenginepowered.com/wp-content/uploads/2020/08/cropped-SBC-MainBrand-Digital-PrimaryMark-Color-32x32.png" alt="SBC Logo" class="sbc-logo">
+        <div class="sbc-text">
+          <h3>Southern Baptist Convention</h3>
+          <p>Calvary Baptist Church is an autonomous local church proudly affiliated with the Southern Baptist Convention (SBC).</p>
+        </div>
+      </div>
+      <a href="https://www.sbc.net/" target="_blank" rel="noopener noreferrer" class="sbc-btn">Learn More</a>
+    </div>
+
     <!-- 2. ENDORSED LINKS / RESOURCES -->
     <section class="endorsements-section">
       <h3>Recommended Links & Endorsements</h3>
       <div class="links-grid">
         <a href="https://bfm.sbc.net/bfm2000/" target="_blank" class="endorsed-link">Baptist Faith and Message 2000</a>
         <a href="https://statementonsocialjustice.com/" target="_blank" class="endorsed-link">Statement on Social Justice & The Gospel</a>
-        <a href="https://cbmw.org/the-nashville-statement/" target="_blank" class="endorsed-link">The Council on Bibical Manhood and Womanhood</a>
+        <a href="https://cbmw.org/the-nashville-statement/" target="_blank" class="endorsed-link">The Council on Biblical Manhood and Womanhood</a>
       </div>
     </section>
 
@@ -281,7 +362,7 @@
     <div class="belief-card">
       <h3 class="belief-title">1. The Holy Bible</h3>
       <div class="belief-summary">
-        We believe Bible is the inherent, infallible word of God.
+        We believe Bible is the inerrant, infallible word of God.
       </div>
       <details>
         <summary>Read full statement & Scripture</summary>
@@ -296,7 +377,7 @@
       <h3 class="belief-title">2. God & The Trinity</h3>
       <div class="belief-summary">
         We believe in one God, eternally existing in three persons: Father, Son, and Holy Spirit.
-        We believe in a triune God who commands our obedience to his laws and statues.
+        We believe in a triune God who commands our obedience to his laws and statutes.
       </div>
       <details>
         <summary>Read full statement & Scripture</summary>
@@ -306,7 +387,7 @@
       </details>
     </div>
 
-    <!-- BELIEF 4 -->
+    <!-- BELIEF 3 -->
     <div class="belief-card">
       <h3 class="belief-title">3. Salvation</h3>
       <div class="belief-summary">
@@ -325,8 +406,8 @@
   <!-- FOOTER -->
   <footer class="church-footer">
     <p><strong>Calvary Baptist Church</strong> | 505 West Smith Avenue, Darlington, SC 29501 | (843) 123-4567</p>
-    <p>Sunday Services: 10:30 AM</p>
-    <p>Wednesday Night: Bible Study 6:00 PM</p>
+    <p>A Member of the Southern Baptist Convention (SBC)</p>
+    <p>Sunday Services: 10:30 AM | Wednesday Night: Bible Study 6:00 PM</p>
     
     <p class="footer-social">
       <a href="https://www.facebook.com/YOUR-CHURCH-PAGE-HERE" target="_blank" rel="noopener noreferrer">
