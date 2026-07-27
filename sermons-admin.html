@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pastor's Sermon Portal</title>
+  <!-- Supabase CDN Script -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    body { 
+      font-family: system-ui, -apple-system, sans-serif; 
+      background-color: #f4f6f8; 
+      margin: 0;
+      padding: 40px 20px; 
+      display: flex;
+      justify-content: center;
+    }
+    .card { 
+      width: 100%;
+      max-width: 480px; 
+      background: #ffffff; 
+      padding: 32px; 
+      border-radius: 12px; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
+      box-sizing: border-box;
+    }
+    h2 { margin-top: 0; color: #1a2522; font-size: 1.5rem; }
+    input, button { 
+      width: 100%; 
+      padding: 12px 14px; 
+      margin-top: 10px;
+      margin-bottom: 16px; 
+      border-radius: 6px; 
+      border: 1px solid #ccc; 
+      box-sizing: border-box; 
+      font-size: 1rem;
+    }
+    input:focus { border-color: #2c3e50; outline: none; }
+    button { 
+      background: #2c3e50; 
+      color: white; 
+      font-weight: 600; 
+      cursor: pointer; 
+      border: none; 
+      margin-top: 8px;
+    }
+    button:hover { background: #1a2522; }
+    #adminBox { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Login Form -->
+  <div class="card" id="loginBox">
+    <h2>Pastor Admin Portal</h2>
+    <p style="color: #666; font-size: 0.9rem;">Please enter your password to add or manage sermons.</p>
+    <label for="adminPass" style="font-weight: 600; font-size: 0.85rem;">Password</label>
+    <input type="password" id="adminPass" placeholder="Enter Admin Password">
+    <button type="button" onclick="checkPassword()">Log In</button>
+  </div>
+
+  <!-- Admin Panel -->
+  <div class="card" id="adminBox">
+    <h2>➕ Add New Sermon</h2>
+    
+    <label style="font-weight: 600; font-size: 0.85rem;">Sermon Title</label>
+    <input type="text" id="title" placeholder="e.g. Walking in Faith">
+    
+    <label style="font-weight: 600; font-size: 0.85rem;">Date Preached</label>
+    <input type="date" id="date">
+    
+    <label style="font-weight: 600; font-size: 0.85rem;">Video Link (YouTube, Shorts, or Facebook)</label>
+    <!-- Changed type to text to prevent browser blocking on mobile/reel links -->
+    <input type="text" id="videoUrl" placeholder="Paste YouTube, Shorts, or Facebook link here...">
+    
+    <button type="button" onclick="addSermon()">Publish Sermon</button>
+    <p id="statusMsg" style="color: #2e7d32; font-weight: bold; text-align: center; margin-top: 10px;"></p>
+  </div>
+
+  <script>
+    const SECRET_PASS = "Church2026!";
+
+    const SUPABASE_URL = "https://jnrhwrrlyxwycdgccdmk.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impucmh3cnJseXh3eWNkZ2NjZG1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ5NTk3MDEsImV4cCI6MjEwMDUzNTcwMX0.FWhCkyeoBhQx7hQ4zc_rRbEoNdywrF1YjLFvJ-qToFo";
+    
+    let dbClient = null;
+    try {
+      if (window.supabase) {
+        dbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+      }
+    } catch (e) {
+      console.error("Supabase load error:", e);
+    }
+
+    function checkPassword() {
+      const input = document.getElementById('adminPass').value;
+      if (input === SECRET_PASS) {
+        document.getElementById('loginBox').style.display = 'none';
+        document.getElementById('adminBox').style.display = 'block';
+      } else {
+        alert('Incorrect password! Check for extra spaces or capital letters.');
+      }
+    }
+
+    async function addSermon() {
+      if (!dbClient) {
+        alert('Database client not loaded. Make sure you are connected to the internet.');
+        return;
+      }
+
+      const title = document.getElementById('title').value.trim();
+      const date = document.getElementById('date').value;
+      let rawUrl = document.getElementById('videoUrl').value.trim();
+
+      if (!title || !date || !rawUrl) {
+        alert('Please fill out all fields before publishing.');
+        return;
+      }
+
+      // Automatically add https:// if missing when pasting
+      if (!rawUrl.startsWith('http://') && !rawUrl.startsWith('https://')) {
+        rawUrl = 'https://' + rawUrl;
+      }
+
+      const { data, error } = await dbClient
+        .from('sermons')
+        .insert([{ title, date, video_url: rawUrl }]);
+
+      if (error) {
+        alert('Error publishing sermon: ' + error.message);
+      } else {
+        document.getElementById('statusMsg').innerText = '✅ Sermon Published Successfully!';
+        document.getElementById('title').value = '';
+        document.getElementById('date').value = '';
+        document.getElementById('videoUrl').value = '';
+      }
+    }
+  </script>
+</body>
+</html>

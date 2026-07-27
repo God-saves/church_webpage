@@ -3,57 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Recommended Resources</title>
+  <title>Recommended Resources - Calvary Baptist Church</title>
+  <!-- Supabase JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #f8f9fa;
-      color: #2c3e50;
+      font-family: Arial, sans-serif;
+      background-color: #4f5f51;
+      color: #ffffff;
       margin: 0;
       padding: 40px 20px;
     }
-    .container { max-width: 800px; margin: 0 auto; }
-    h1 { text-align: center; color: #1a2522; margin-bottom: 30px; }
-    .resource-list { display: flex; flex-direction: column; gap: 20px; }
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 35px;
+      font-size: 2.5rem;
+      border-bottom: 3px solid #D47A5B;
+      padding-bottom: 12px;
+    }
+    .resource-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
     .resource-card {
-      background: white;
-      padding: 24px;
-      border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      border-left: 5px solid #1a2522;
+      background: #333333;
+      padding: 24px 28px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      border-left: 5px solid #D47A5B;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .resource-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
     .resource-title {
-      font-size: 1.3rem;
-      margin: 0 0 6px 0;
+      font-size: 1.35rem;
+      font-weight: bold;
+      margin: 0 0 8px 0;
     }
     .resource-title a {
-      color: #1a2522;
+      color: #ffffff;
       text-decoration: none;
     }
-    .resource-title a:hover { text-decoration: underline; }
+    .resource-title a:hover {
+      color: #D47A5B;
+    }
     .resource-meta {
-      font-size: 0.85rem;
-      color: #6c757d;
-      margin-bottom: 12px;
+      font-size: 0.88rem;
+      color: #bbbbbb;
+      margin-bottom: 14px;
+      font-style: italic;
     }
     .resource-desc {
-      margin: 0 0 15px 0;
-      color: #495057;
-      line-height: 1.5;
+      margin: 0 0 18px 0;
+      color: #e0e0e0;
+      line-height: 1.6;
+      font-size: 0.98rem;
     }
     .read-btn {
       display: inline-block;
-      background-color: #f1f3f5;
-      color: #1a2522;
-      padding: 8px 16px;
+      background-color: #D47A5B;
+      color: #ffffff;
+      padding: 9px 18px;
       border-radius: 6px;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: bold;
       font-size: 0.9rem;
+      transition: background-color 0.2s ease;
     }
-    .read-btn:hover { background-color: #e9ecef; }
-    .loading-msg { text-align: center; color: #666; }
+    .read-btn:hover {
+      background-color: #b86245;
+    }
+    .loading-msg {
+      text-align: center;
+      color: #ffffff;
+      font-size: 1.2rem;
+      padding: 40px;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
@@ -92,14 +127,14 @@
       container.innerHTML = resources.map(item => `
         <div class="resource-card">
           <h2 class="resource-title">
-            <a href="${item.url}" target="_blank">${item.title}</a>
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.title}</a>
           </h2>
           <div class="resource-meta">
             ${item.author ? `By ${item.author} • ` : ''} 
             Posted on ${new Date(item.created_at).toLocaleDateString()}
           </div>
           ${item.description ? `<p class="resource-desc">${item.description}</p>` : ''}
-          <a href="${item.url}" target="_blank" class="read-btn">Read Article ↗</a>
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="read-btn">Read Article ↗</a>
         </div>
       `).join('');
     }

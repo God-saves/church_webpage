@@ -3,41 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sermons</title>
+  <title>Sermons - Calvary Baptist Church</title>
   <!-- Supabase JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <style>
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #f8f9fa;
+      font-family: Arial, sans-serif;
+      background-color: #4f5f51;
+      color: white;
       margin: 0;
       padding: 40px 20px;
     }
     .container {
-      max-width: 900px;
+      max-width: 1000px;
       margin: 0 auto;
     }
     h1 {
       text-align: center;
-      color: #1a2522;
+      color: #ffffff;
       margin-bottom: 30px;
+      font-size: 2.5rem;
+      border-bottom: 3px solid #D47A5B;
+      padding-bottom: 10px;
     }
     .sermon-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 24px;
     }
     .sermon-card {
-      background: white;
-      border-radius: 12px;
+      background: #333333;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
       display: flex;
       flex-direction: column;
+      border-top: 4px solid #D47A5B;
     }
     .video-container {
       position: relative;
-      padding-bottom: 56.25%;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
       height: 0;
       overflow: hidden;
       background-color: #000;
@@ -54,21 +59,24 @@
       padding: 20px;
     }
     .sermon-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #2c3e50;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #ffffff;
       margin: 0 0 8px 0;
     }
     .sermon-date {
-      color: #6c757d;
-      font-size: 0.9rem;
+      color: #cccccc;
+      font-size: 0.95rem;
       margin: 0;
+      font-style: italic;
     }
     .status-msg {
       text-align: center;
-      color: #666;
-      font-size: 1.1rem;
+      color: #ffffff;
+      font-size: 1.2rem;
       padding: 40px;
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -80,67 +88,92 @@
   </div>
 
   <script>
-    const SUPABASE_URL = "https://jnrhwrrlyxwycdgccdmk.supabase.co";
-    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impucmh3cnJseXh3eWNkZ2NjZG1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ5NTk3MDEsImV4cCI6MjEwMDUzNTcwMX0.FWhCkyeoBhQx7hQ4zc_rRbEoNdywrF1YjLFvJ-qToFo";
+  // Supabase REST API credentials
+  const SUPABASE_URL = "https://jnrhwrrlyxwycdgccdmk.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impucmh3cnJseXh3eWNkZ2NjZG1rIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ5NTk3MDEsImV4cCI6MjEwMDUzNTcwMX0.FWhCkyeoBhQx7hQ4zc_rRbEoNdywrF1YjLFvJ-qToFo";
 
-    function getEmbedUrl(url) {
-      if (!url) return '';
-      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-      const match = url.match(regExp);
-      return (match && match[2].length === 11) 
-        ? 'https://www.youtube-nocookie.com/embed/' + match[2] 
-        : url;
+  // Link converter function for YouTube & Facebook
+  function getEmbedUrl(rawUrl) {
+    if (!rawUrl) return '';
+
+    const cleanUrl = rawUrl.trim();
+
+    // Facebook Videos, Reels, & Watch links
+    if (cleanUrl.includes("facebook.com") || cleanUrl.includes("fb.watch") || cleanUrl.includes("fb.com")) {
+      return `https://www.facebook.com/plugins/video.php?href=${encodeURIComponent(cleanUrl)}&show_text=false&width=560`;
     }
 
-    async function loadSermons() {
-      const container = document.getElementById('sermonsList');
-      
-      try {
-        // Direct REST API fetch (Bypasses library load issues)
-        const response = await fetch(`${SUPABASE_URL}/rest/v1/sermons?select=*&order=date.desc`, {
-          headers: {
-            'apikey': SUPABASE_KEY,
-            'Authorization': `Bearer ${SUPABASE_KEY}`
-          }
-        });
+    // YouTube Videos, Shorts, & Share links
+    if (cleanUrl.includes("youtube.com") || cleanUrl.includes("youtu.be")) {
+      let videoId = '';
+      if (cleanUrl.includes("youtu.be/")) {
+        videoId = cleanUrl.split("youtu.be/")[1].split("?")[0].split("/")[0];
+      } else if (cleanUrl.includes("shorts/")) {
+        videoId = cleanUrl.split("shorts/")[1].split("?")[0].split("/")[0];
+      } else if (cleanUrl.includes("v=")) {
+        videoId = cleanUrl.split("v=")[1].split("&")[0];
+      }
 
-        if (!response.ok) {
-          throw new Error(`Server returned status ${response.status}`);
-        }
-
-        const sermons = await response.json();
-
-        if (!sermons || sermons.length === 0) {
-          container.innerHTML = 'No sermons published yet!';
-          return;
-        }
-
-        container.className = 'sermon-grid';
-        container.innerHTML = sermons.map(sermon => `
-          <div class="sermon-card">
-            <div class="video-container">
-              <iframe 
-                src="${getEmbedUrl(sermon.video_url)}" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                referrerpolicy="strict-origin-when-cross-origin" 
-                allowfullscreen>
-              </iframe>
-            </div>
-            <div class="sermon-info">
-              <h3 class="sermon-title">${sermon.title || 'Untitled Sermon'}</h3>
-              <p class="sermon-date">Preached on: ${sermon.date || 'N/A'}</p>
-            </div>
-          </div>
-        `).join('');
-
-      } catch (err) {
-        console.error('Fetch error:', err);
-        container.innerHTML = '⚠️ Could not load sermons. Please check your internet connection or console.';
+      if (videoId) {
+        return `https://www.youtube.com/embed/${videoId}`;
       }
     }
 
-    // Run load on window ready
-    window.addEventListener('DOMContentLoaded', loadSermons);
-  </script>
+    return cleanUrl;
+  }
+
+  // Fetch sermons directly via REST API (Bypasses local storage tracking restrictions)
+  async function loadSermons() {
+    const container = document.getElementById('sermonsList') || document.getElementById('sermonsContainer');
+
+    try {
+      const response = await fetch(`${SUPABASE_URL}/rest/v1/sermons?select=*&order=date.desc`, {
+        headers: {
+          'apikey': SUPABASE_KEY,
+          'Authorization': `Bearer ${SUPABASE_KEY}`
+        }
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const sermons = await response.json();
+
+      if (!sermons || sermons.length === 0) {
+        container.innerHTML = '<p>No sermons published yet!</p>';
+        return;
+      }
+
+      container.innerHTML = sermons.map(sermon => `
+        <div class="sermon-card" style="margin-bottom: 30px;">
+          <div class="video-container">
+            <iframe 
+              src="${getEmbedUrl(sermon.video_url)}" 
+              width="100%"
+              height="315"
+              style="border:none;"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              referrerpolicy="strict-origin-when-cross-origin" 
+              allowfullscreen>
+            </iframe>
+          </div>
+          <div class="sermon-info">
+            <h3 class="sermon-title">${sermon.title || 'Untitled Sermon'}</h3>
+            <p class="sermon-date">Preached on: ${sermon.date || 'N/A'}</p>
+          </div>
+        </div>
+      `).join('');
+
+    } catch (err) {
+      console.error('Fetch error:', err);
+      if (container) {
+        container.innerHTML = '⚠️ Could not load sermons. If running locally, check browser security settings.';
+      }
+    }
+  }
+
+  window.addEventListener('DOMContentLoaded', loadSermons);
+</script>
 </body>
 </html>
