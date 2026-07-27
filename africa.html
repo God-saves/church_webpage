@@ -1,166 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Global Missions</title>
+  <link rel="icon" href="https://sbcnet.wpenginepowered.com/wp-content/uploads/2020/08/cropped-SBC-MainBrand-Digital-PrimaryMark-Color-32x32.png" sizes="32x32">
+  <title>Missions Ministry - Calvary Baptist Church</title>
+
   <style>
     body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background-color: #f8f9fa;
-      color: #2c3e50;
+      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px 20px;
-      line-height: 1.6;
+      padding: 0;
+      background-color: #4f5f51;
+      color: white;
     }
-    .container {
+
+    .main-content {
+      width: 80%;
       max-width: 900px;
-      margin: 0 auto;
-    }
-    .header {
+      margin: auto;
+      padding: 60px 20px 80px 20px;
       text-align: center;
+    }
+
+    /* PAGE HERO BANNER */
+    .hero-section {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;          
+      border-bottom: 5px solid #D47A5B;
+    }
+
+    .hero-section h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    }
+    
+    .hero-section p {
+      font-size: 20px;
+      color: #f1f1f1;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+    }
+
+    /* MISSION OVERVIEW BOX */
+    .mission-details-card {
+      background-color: rgba(44, 62, 80, 0.5);
+      border-radius: 8px;
+      border-top: 5px solid #D47A5B;
+      padding: 30px 25px;
+      margin-bottom: 40px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      text-align: left;
+    }
+
+    .mission-details-card h2 {
+      font-size: 28px;
+      color: #ffffff;
+      margin-top: 0;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+
+    .mission-details-card p {
+      font-size: 17px;
+      line-height: 1.6;
+      color: #e0e0e0;
+      margin-bottom: 15px;
+    }
+
+    /* EXTERNAL PROGRAM LINKS */
+    .mission-links {
+      text-align: center;
+      margin-top: 25px;
+      padding-top: 20px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    }
+
+    .mission-button {
+      display: inline-block;
+      background-color: #333;
+      color: white;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 6px;
+      border: 1px solid #555;
+      font-size: 16px;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      margin: 5px;
+    }
+
+    .mission-button:hover {
+      background-color: #D47A5B;
+      border-color: #D47A5B;
+    }
+
+    /* SECTION TITLE */
+    .section-heading {
+      font-size: 32px;
+      color: #ffffff;
+      margin-bottom: 30px;
+      border-bottom: 2px solid rgba(212, 122, 91, 0.4);
+      padding-bottom: 10px;
+    }
+
+    /* PHOTO GALLERY GRID */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
       margin-bottom: 40px;
     }
-    .header h1 {
-      font-size: 2.2rem;
-      color: #1a2522;
-      margin-bottom: 8px;
-    }
-    .header p {
-      color: #6c757d;
-      font-size: 1.1rem;
-      margin: 0;
+
+    .gallery-item {
+      background-color: rgba(44, 62, 80, 0.5);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
-    .missionary-card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 28px;
-      margin-bottom: 24px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
-      border: 1px solid #e9ecef;
-      display: flex;
-      flex-direction: column;
+    .gallery-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
     }
 
-    @media (min-width: 600px) {
-      .missionary-card {
-        flex-direction: row;
-        align-items: center;
-        gap: 24px;
+    .gallery-caption {
+      padding: 12px;
+      font-size: 14px;
+      color: #e0e0e0;
+      text-align: center;
+    }
+
+    /* MOBILE ADJUSTMENTS */
+    @media screen and (max-width: 768px) {
+      .hero-section h1 {
+        font-size: 36px;
+      }
+
+      .main-content {
+        width: 90%;
+        padding: 30px 10px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mission-button {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
       }
     }
 
-    .missionary-info {
-      flex-grow: 1;
+    /* FOOTER STYLING */
+    .church-footer {
+      display: block;
+      width: 100%;
+      background-color: #2b302c; 
+      border: 10px solid #454d46;
+      color: #ffffff;
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 14px;
+      clear: both;
+      box-sizing: border-box;
     }
 
-    .location-tag {
-      display: inline-block;
-      background-color: #e9ecef;
-      color: #495057;
-      font-size: 0.8rem;
-      font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      margin-bottom: 8px;
+    .church-footer p {
+      margin: 5px 0;
     }
 
-    .missionary-card h2 {
-      margin: 0 0 8px 0;
-      font-size: 1.35rem;
-      color: #1a2522;
+    .footer-social {
+      margin-top: 15px;
     }
 
-    .missionary-card p {
-      margin: 0 0 16px 0;
-      color: #495057;
-      font-size: 0.98rem;
-    }
-
-    .action-group {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      display: inline-block;
+    .footer-social a {
+      color: #D47A5B; 
       text-decoration: none;
-      background-color: #1a2522;
-      color: white;
-      padding: 8px 16px;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: bold;
+      transition: color 0.2s ease;
     }
 
-    .btn-secondary {
-      background-color: #e9ecef;
-      color: #2c3e50;
+    .footer-social a:hover {
+      color: #ffffff; 
     }
 
-    .btn:hover {
-      background-color: #2c3e50;
-      color: white;
+    .church-footer .copyright {
+      margin-top: 20px;
+      opacity: 0.6; 
+      font-size: 12px; 
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <!-- HERO HEADER -->
+  <header class="hero-section">
+    <h1>Missions & Outreach</h1>
+    <p>Sharing Christ’s love in our community and around the world</p>
+  </header>
+
+  <!-- MAIN CONTENT AREA -->
+  <main class="main-content">
+
+    <!-- MISSION OVERVIEW SECTION -->
+    <section class="mission-details-card">
+      <h2>About Our Mission Project</h2>
+      
+      <p>
+        [Insert paragraphs here describing the mission initiative, location, purpose, or story. You can write as much as you need here!]
+      </p>
+
+      <p>
+        [Additional details about how your church family is getting involved, upcoming trip dates, or goals.]
+      </p>
+
+      <!-- LINK TO MISSION PROGRAM WEBSITE -->
+      <div class="mission-links">
+        <a href="https://example.com" target="_blank" rel="noopener noreferrer" class="mission-button">
+          🌐 Visit Official Program Website
+        </a>
+        <a href="https://example.com/donate" target="_blank" rel="noopener noreferrer" class="mission-button">
+          ❤️ Support / Donate
+        </a>
+      </div>
+    </section>
+
+    <!-- PHOTO GALLERY SECTION -->
+    <h2 class="section-heading">Mission Highlights & Photos</h2>
+
+    <div class="gallery-grid">
+
+      <!-- PHOTO 1 -->
+      <div class="gallery-item">
+        <!-- Swap 'images/mission1.jpg' with your image file name -->
+        <img src="images/mission1.jpg" alt="Mission Work 1">
+        <div class="gallery-caption">Community outreach work</div>
+      </div>
+
+      <!-- PHOTO 2 -->
+      <div class="gallery-item">
+        <img src="images/mission2.jpg" alt="Mission Work 2">
+        <div class="gallery-caption">Team preparing supplies</div>
+      </div>
+
+      <!-- PHOTO 3 -->
+      <div class="gallery-item">
+        <img src="images/mission3.jpg" alt="Mission Work 3">
+        <div class="gallery-caption">Group photo with the community</div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="church-footer">
+    <p><strong>Calvary Baptist Church</strong> | 505 West Smith Avenue, Darlington, SC 29501 | (843) 123-4567</p>
+    <p>Sunday Services: 10:30 AM</p>
+    <p>Wednesday Night: Bible Study 6:00 PM</p>
     
-    <!-- Page Header -->
-    <div class="header">
-      <h1>Global & International Missions</h1>
-      <p>Supporting workers and church planting efforts around the world.</p>
-    </div>
+    <p class="footer-social">
+      <a href="https://www.facebook.com/YOUR-CHURCH-PAGE-HERE" target="_blank" rel="noopener noreferrer">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+        <span>Follow us on Facebook</span>
+      </a>
+    </p>
 
-    <!-- Missionary / Partner 1 -->
-    <div class="missionary-card">
-      <div class="missionary-info">
-        <span class="location-tag">Latin America</span>
-        <h2>The Miller Family</h2>
-        <p>
-          Serving in church planting, pastoral training, and community development across rural villages.
-        </p>
-        <div class="action-group">
-          <a href="donate.html" class="btn">Support the Millers</a>
-          <a href="contact.html" class="btn btn-secondary">Request Newsletter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Missionary / Partner 2 -->
-    <div class="missionary-card">
-      <div class="missionary-info">
-        <span class="location-tag">Southeast Asia</span>
-        <h2>Translation & Literacy Project</h2>
-        <p>
-          Partnering with native translation teams to bring the New Testament into unreached indigenous languages.
-        </p>
-        <div class="action-group">
-          <a href="donate.html" class="btn">Support Bible Translation</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Missionary / Partner 3 -->
-    <div class="missionary-card">
-      <div class="missionary-info">
-        <span class="location-tag">Short-Term Trips</span>
-        <h2>Annual Mission Trips</h2>
-        <p>
-          Every summer, our church sends medical, construction, and VBS teams to support our long-term partner churches abroad.
-        </p>
-        <div class="action-group">
-          <a href="contact.html" class="btn">Inquire About Next Trip</a>
-        </div>
-      </div>
-    </div>
-
-  </div>
+    <p class="copyright">&copy; 2026 Calvary Baptist Church. All rights reserved.</p>
+  </footer>
 
 </body>
 </html>
